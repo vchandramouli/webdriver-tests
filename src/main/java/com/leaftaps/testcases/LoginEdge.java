@@ -52,38 +52,80 @@ public class LoginEdge {
 		// Step 3: Print the title --> getTitle
 		driver.findElement(By.id("password")).sendKeys("crmsfa");
 
-		Thread.sleep(5000);
-
+		// Click on login button
 		driver.findElement(By.className("decorativeSubmit")).click();
 
-		Thread.sleep(5000);
+		// Get the text of the element
 
+		String text = driver.findElement(By.tagName("h2")).getText();
+		System.out.println(text);
+		
+		
+		// click on Crmsfa Link
 
-		// Step 4: Take Snapshot
-		//File src = driver.getScreenshotAs(OutputType.FILE);
-		//FileUtils.copyFile(src, new File("login.png"));
+		driver.findElement(By.linkText("CRM/SFA")).click();
 
+		//To get the Title of the page
+		
+		String title = driver.getTitle();
+		System.out.println(title);
+		
+		if (title.contains("My Home")) {
+			System.out.println("verified Sucessfully");
+		} else {
 
-		// Step 4: Take Snapshot
-		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			System.out.println("Verified not Sucessfully");
+		}
+		
+		
+		
+		//Click on the Leads 
+		
+		driver.findElement(By.partialLinkText("Lea")).click();
+	
+		//CLick on the Create Leads Button
+		
+		driver.findElement(By.partialLinkText("Creat")).click();
+		
 
-		// Define the directory path where you want to store the images
-		String directoryPath = "reports/images/";
+		//Enter the Company Name
+		driver.findElement(By.id("createLeadForm_companyName")).sendKeys("TestLeaf");
+		
+		//Enter the First Name
+		driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Vinoth");
+		
+		//Enter The Last Name
+		driver.findElement(By.id("createLeadForm_lastName")).sendKeys("S");
+		
+		
+		
+		
+		
+		
+		//Click on the Create Leads Button
+		driver.findElement(By.name("submitButton")).click();
+		
+		
+		//To Verify the Lead First Name
+		
+		WebElement findElement = driver.findElement(By.id("viewLead_firstName_sp"));
+		System.out.println(findElement.getText());
+		String firstName = findElement.getText();
+		if (firstName.equals("Vinoth")) {
+			
+			System.out.println("Verfied Sucessfully");
+			
+		} else {
 
-		// Create a timestamp for the filename
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String timestamp = dateFormat.format(new Date());
-
-		// Construct the filename with the login date and time
-		String fileName = "Login_Edge_" + timestamp + ".png";
-
-		// Specify the full path for the screenshot
-		String fullPath = directoryPath + fileName;
-
-		// Save the screenshot to the specified location
-		FileUtils.copyFile(src, new File(fullPath));
-		// Close the browser
-		driver.close();
+			System.out.println("Verified not Sucessfully");
+			
+		}
+		
+		
+		// To Get the Title of the Page
+		
+		String title2 = driver.getTitle();
+		System.out.println(title2);
 
 
 	}
