@@ -45,7 +45,7 @@ public class LoginEdge {
 		//Thread.sleep(10000);
 
 		// Step 3: Print the title --> getTitle
-		driver.findElement(By.id("username")).sendKeys("democsr");
+		driver.findElement(By.id("username")).sendKeys("DemoSalesManager");
 		System.out.println("The title is "+driver.getTitle());
 
 		Thread.sleep(5000);
