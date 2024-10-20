@@ -32,9 +32,8 @@ public class LoginEdge {
 		//dc.setVersion("120.0");
 		dc.setPlatform(Platform.LINUX);
 
-		RemoteWebDriver driver = new RemoteWebDriver(new URL("http://20.40.57.2:4444/wd/hub"), dc);
+		RemoteWebDriver driver = new RemoteWebDriver(new URL("http://20.40.48.160:4444/wd/hub"), dc);
 
-		//ChromeDriver driver = new ChromeDriver();
 
 		// Step 2: Load an URL
 		driver.get("http://leaftaps.com/opentaps");
@@ -42,7 +41,7 @@ public class LoginEdge {
 		// Maximize the browser
 		driver.manage().window().maximize();
 
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 
 		// Step 3: Print the title --> getTitle
 		driver.findElement(By.id("username")).sendKeys("democsr");
